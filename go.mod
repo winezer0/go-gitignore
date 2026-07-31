@@ -1,3 +1,3 @@
-module github.com/winezer0/gitignore
+module github.com/winezer0/goignore
 
 go 1.20

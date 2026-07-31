@@ -17,7 +17,7 @@
 ## 安装
 
 ```bash
-go get github.com/winezer0/gitignore
+go get github.com/winezer0/goignore
 ```
 
 ## 仓库匹配器
@@ -29,7 +29,7 @@ import (
 	"fmt"
 	"log"
 
-	ignore "github.com/winezer0/gitignore"
+	ignore "github.com/winezer0/goignore"
 )
 
 func main() {
@@ -83,7 +83,3 @@ defer stack.Pop()
 - 仓库匹配器进行词法路径边界检查，不要求目标路径已经存在。
 - `.git` 为 worktree 指针文件时暂不解析其实际 gitdir。
 - 启用全局 Git ignore 时会尝试执行 `git config`，失败后检查标准用户配置路径。
-
-## 许可证
-
-MIT，派生与参考信息见 `THIRD_PARTY_NOTICES.md`。

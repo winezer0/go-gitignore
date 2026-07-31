@@ -1,9 +1,10 @@
-package gitignore
+package goignore
 
 import (
 	"fmt"
 	"regexp"
 	"strings"
+	"unicode/utf8"
 )
 
 func globExpression(pattern string, anchored bool) (string, error) {
@@ -33,9 +34,13 @@ func globExpression(pattern string, anchored bool) (string, error) {
 				continue
 			}
 			index++
-			expression.WriteString(regexp.QuoteMeta(string(pattern[index])))
+			character, size := utf8.DecodeRuneInString(pattern[index:])
+			expression.WriteString(regexp.QuoteMeta(string(character)))
+			index += size - 1
 		default:
-			expression.WriteString(regexp.QuoteMeta(string(char)))
+			character, size := utf8.DecodeRuneInString(pattern[index:])
+			expression.WriteString(regexp.QuoteMeta(string(character)))
+			index += size - 1
 		}
 	}
 	expression.WriteByte('$')

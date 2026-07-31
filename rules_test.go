@@ -1,4 +1,4 @@
-package gitignore
+package goignore
 
 import (
 	"os"
@@ -17,6 +17,8 @@ func TestRuleSetGitSemantics(t *testing.T) {
 	}{
 		{name: "comment ignored", lines: []string{"# comment"}, path: "# comment"},
 		{name: "UTF-8 BOM", lines: []string{"\ufeff*.cache"}, path: "data.cache", want: true, pattern: "*.cache"},
+		{name: "Unicode literal", lines: []string{"café/"}, path: "café/file.go", want: true, pattern: "café/"},
+		{name: "escaped Unicode literal", lines: []string{`\日.txt`}, path: "日.txt", want: true, pattern: `\日.txt`},
 		{name: "escaped comment", lines: []string{`\#literal`}, path: "#literal", want: true, pattern: `\#literal`},
 		{name: "escaped negation", lines: []string{`\!literal`}, path: "!literal", want: true, pattern: `\!literal`},
 		{name: "trailing spaces ignored", lines: []string{"*.log   "}, path: "app.log", want: true, pattern: "*.log   "},

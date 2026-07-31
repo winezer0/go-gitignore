@@ -46,4 +46,4 @@
 // 规则文件读取、无效 glob、路径转换和仓库初始化错误均返回调用方。启用全局 Git
 // ignore 时会尝试执行 git config，命令不可用时回退到标准用户配置路径。当前不解析
 // worktree .git 指针文件指向的实际 gitdir。
-package gitignore
+package goignore
